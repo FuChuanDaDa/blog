@@ -99,5 +99,5 @@ theme: volantis
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: "git"
-  repo: git@github.com:FuChuanDaDa/blog.git
+  repo: git@github.com:FuChuanDaDa/FuChuanDaDa.github.io.git
   branch: master
