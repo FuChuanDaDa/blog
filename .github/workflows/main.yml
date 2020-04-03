@@ -35,7 +35,7 @@ jobs:
     - name: Deploy
       run: |
         hexo generate
-	      # 解决 commit 清空问题
+        # 解决 commit 清空问题
         git clone https://github.com/FuChuanDaDa/FuChuanDaDa.github.io.deploy_git 
         cd .deploy_git
         git checkout master
