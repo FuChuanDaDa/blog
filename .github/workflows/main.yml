@@ -30,8 +30,8 @@ jobs:
         git config --global user.email 'voidmaker04069@gmail.com'
         # install dependencies
         npm i -g hexo-cli # 安装hexo
-        npm i
-  
+        npm i 
+        npm install hexo-deployer-git --save 
     - name: Deploy
       run: |
         hexo generate
