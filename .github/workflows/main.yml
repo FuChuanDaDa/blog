@@ -34,6 +34,11 @@ jobs:
   
     - name: Deploy
       run: |
-        # publish
-        hexo generate && hexo deploy # 执行部署程序
-
+        hexo generate
+	      # 解决 commit 清空问题
+        git clone https://github.com/FuChuanDaDa/FuChuanDaDa.github.io.deploy_git 
+        cd .deploy_git
+        git checkout master
+        cd ../
+        # generate and depoly
+        hexo deploy
