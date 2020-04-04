@@ -1,44 +1,38 @@
-name: HEXO CI
-
-on: [push]
-
+on: push
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
+    runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "10.x"
 
-      - name: Configuration environment
+      - name: Setup Hexo env
         env:
-          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         run: |
+          # set up private key for deploy
           mkdir -p ~/.ssh/
-          echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+          echo "$HEXO_DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.name "FuChuanDaDa"
-          git config --global user.email "voidmaker04069@gmail.com"
+          # set git infomation
+          git config --global user.name 'FuChuanDaDa'
+          git config --global user.email 'voidmaker04069@gmail.com'
 
-      - name: Install dependencies
-        run: |
+          # install dependencies
+          export TZ='Asia/Shanghai'
           npm i -g hexo-cli
           npm i
           npm install hexo-deployer-git --save
- 
-      - name: Deploy hexo
+      - name: Deploy
         run: |
           hexo generate
-          git clone git@github.com：{username} / {repo} .git
-          cd .git
+          git clone https://github.com/FuChuanDaDa/FuChuanDaD.github.io .deploy_git 
+          cd .deploy_git
           git checkout master
           cd ../
           # generate and depoly
