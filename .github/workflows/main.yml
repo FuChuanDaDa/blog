@@ -27,7 +27,6 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name "FuChuanDaDa"
           git config --global user.email "voidmaker04069@gmail.com"
-          git clone https://github.com/xaoxuu/hexo-theme-volantis themes/volantis
 
       - name: Install dependencies
         run: |
