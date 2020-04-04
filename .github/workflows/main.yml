@@ -32,6 +32,7 @@ jobs:
         run: |
           npm i -g hexo-cli
           npm i
+          npm install hexo-deployer-git --save
 
       - name: Deploy hexo
         run: |
