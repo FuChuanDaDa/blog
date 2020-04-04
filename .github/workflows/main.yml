@@ -33,7 +33,13 @@ jobs:
           npm i -g hexo-cli
           npm i
           npm install hexo-deployer-git --save
-
+         
       - name: Deploy hexo
         run: |
-          hexo g -d
+          hexo generate
+	        git clone https://github.com/FuChuanDaDa/FuChuanDaDa.github.io.deploy_git 
+          cd .deploy_git
+          git checkout master
+          cd ../
+          # generate and depoly
+          hexo deploy
