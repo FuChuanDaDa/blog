@@ -33,7 +33,10 @@ jobs:
           npm i -g hexo-cli
           npm i
           npm install hexo-deployer-git --save
-         
+          npm install hexo-generator-search --save
+          npm insatll hexo-generator-json-content --save
+          npm install hexo-renderer-stylus --save
+                           
       - name: Deploy hexo
         run: |                   
          hexo clean 
